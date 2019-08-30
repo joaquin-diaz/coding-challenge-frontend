@@ -1,9 +1,13 @@
-# React Typescript Boilerplate
-A boilerplate including typescript, TSLint and Prettier support. It runs prettier and linter on commit   
+# SF Film Locations UI
+Kindalab code challenge
 
 ## Install dependencies
 
     yarn install
+
+## Setup GMaps API Key
+
+    export GOOGLE_MAPS_API_KEY=<api_ket>
 
 ## Commands
 

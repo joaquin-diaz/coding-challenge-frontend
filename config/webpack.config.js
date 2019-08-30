@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { DefinePlugin } = require('webpack');
 
 module.exports = {
   entry: './app/index.tsx',
@@ -26,6 +27,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'app/index.html',
+    }),
+    new DefinePlugin({
+      ENV: {
+        GOOGLE_MAPS_API_KEY: JSON.stringify(process.env.GOOGLE_MAPS_API_KEY),
+      },
     }),
   ],
 };
