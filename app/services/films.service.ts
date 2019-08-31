@@ -13,6 +13,11 @@ const fetchFilms = (query: string, limit: number) => {
             lng: -122.3999262,
           },
           address: '555 Market St',
+          releaseYear: 2001,
+          director: 'Peter something',
+          actor1: 'Sir Ian',
+          actor2: 'El del ciclon',
+          actor3: 'Orlandito Boom',
         },
       ];
 
@@ -21,4 +26,9 @@ const fetchFilms = (query: string, limit: number) => {
   });
 };
 
-export { fetchFilms };
+const fetchFilmPoster = (title: string) => {
+  const requestURL = `https://api.themoviedb.org/3/search/movie?api_key=df64e6cd95db45008fde4b72584e8974&query=${title}`;
+  return fetch(requestURL);
+};
+
+export { fetchFilms, fetchFilmPoster };

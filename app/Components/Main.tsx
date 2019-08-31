@@ -3,14 +3,19 @@ import * as React from 'react';
 import FilmsLocationMapContainer from '../Containers/FilmsLocationMap.container';
 import SearchBarContainer from '../Containers/SearchBar.container';
 import FilmDetailsContainer from '../Containers/FilmDetails.container';
+import styled from '@emotion/styled';
+
+const GlobalStyles = styled.div`
+  font-family: 'Open Sans', sans-serif;
+`;
 
 const Main: React.FC = () => {
   return (
-    <React.Fragment>
+    <GlobalStyles>
       <SearchBarContainer />
       <FilmsLocationMapContainer />
       <FilmDetailsContainer />
-    </React.Fragment>
+    </GlobalStyles>
   );
 };
 

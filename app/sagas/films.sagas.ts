@@ -8,4 +8,15 @@ export function* fetchFilms() {
   yield put(filmsActions.fetchFilmsSuccess(response));
 }
 
-export default [takeLatest(filmsActions.FETCH_FILMS, fetchFilms)];
+export function* fetchFilmPoster(action: filmsActions.SelectFilmAction) {
+  const response = yield call(filmsService.fetchFilmPoster, action.film.title);
+  const responseJson = yield response.json();
+  const posterPath = responseJson.results[0].poster_path;
+
+  yield put(filmsActions.setSelectedFilmPoster(`http://image.tmdb.org/t/p/w500/${posterPath}`));
+}
+
+export default [
+  takeLatest(filmsActions.FETCH_FILMS, fetchFilms),
+  takeLatest(filmsActions.SELECT_FILM, fetchFilmPoster),
+];

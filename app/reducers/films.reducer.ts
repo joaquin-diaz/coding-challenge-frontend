@@ -6,12 +6,14 @@ export interface FilmsState {
   isLoading: boolean;
   films: Array<Film>;
   selectedFilm: Film | null;
+  selectedFilmPoster: string | null;
 }
 
 export const initialState: FilmsState = {
   isLoading: false,
   films: [],
   selectedFilm: null,
+  selectedFilmPoster: null,
 };
 
 const filmReducer: Reducer<FilmsState> = (
@@ -34,6 +36,11 @@ const filmReducer: Reducer<FilmsState> = (
       return {
         ...state,
         selectedFilm: action.film,
+      };
+    case 'SET_SELECTED_FILM_POSTER':
+      return {
+        ...state,
+        selectedFilmPoster: action.posterURL,
       };
     default:
       return state;
