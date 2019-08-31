@@ -1,27 +1,30 @@
-import Action from './Action';
 import Film from '../types/Film';
+import { Action, ActionCreator } from 'redux';
 
-export type FilmsAction = 'FETCH_FILMS' | 'FETCH_FILMS_SUCCESS' | 'FETCH_FILMS_ERROR';
+export const FETCH_FILMS = 'FETCH_FILMS';
+export const FETCH_FILMS_SUCCESS = 'FETCH_FILMS_SUCCESS';
+
+export type FilmsAction = typeof FETCH_FILMS | typeof FETCH_FILMS_SUCCESS;
 
 interface FetchFilmsAction extends Action<FilmsAction> {
-  type: 'FETCH_FILMS';
+  type: typeof FETCH_FILMS;
 }
 interface FetchFilmsSuccessAction extends Action<FilmsAction> {
-  type: 'FETCH_FILMS_SUCCESS';
+  type: typeof FETCH_FILMS_SUCCESS;
   films: Array<Film>;
 }
 
-export type FilmsActionType = FetchFilmsAction | FetchFilmsSuccessAction;
+export type FilmsActions = FetchFilmsAction | FetchFilmsSuccessAction;
 
-export const fetchFilms = (): FetchFilmsAction => {
+export const fetchFilms: ActionCreator<FetchFilmsAction> = () => {
   return {
-    type: 'FETCH_FILMS',
+    type: FETCH_FILMS,
   };
 };
 
-export const fetchFilmsSuccess = (films: Array<Film>): FetchFilmsSuccessAction => {
+export const fetchFilmsSuccess: ActionCreator<FetchFilmsSuccessAction> = (films: Array<Film>) => {
   return {
     films,
-    type: 'FETCH_FILMS_SUCCESS',
+    type: FETCH_FILMS_SUCCESS,
   };
 };

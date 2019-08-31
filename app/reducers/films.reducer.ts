@@ -1,5 +1,6 @@
 import Film from '../types/Film';
-import { FilmsActionType } from '../actions/films.actions';
+import { FilmsActions } from '../actions/films.actions';
+import { Reducer } from 'redux';
 
 export interface FilmsState {
   isLoading: boolean;
@@ -11,7 +12,10 @@ export const initialState: FilmsState = {
   films: [],
 };
 
-const filmReducer = (state: FilmsState, action: FilmsActionType): FilmsState => {
+const filmReducer: Reducer<FilmsState> = (
+  state: FilmsState = initialState,
+  action: FilmsActions,
+) => {
   switch (action.type) {
     case 'FETCH_FILMS':
       return {
@@ -22,10 +26,10 @@ const filmReducer = (state: FilmsState, action: FilmsActionType): FilmsState => 
       return {
         ...state,
         films: action.films,
+        isLoading: false,
       };
-    default: {
+    default:
       return state;
-    }
   }
 };
 

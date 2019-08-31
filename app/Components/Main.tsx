@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import SearchBar from './SearchBar/SearchBar';
 import FilmsLocationMapContainer from '../Containers/FilmsLocationMap.container';
+import SearchBarContainer from '../Containers/SearchBar.container';
 
 const Main: React.FC = () => {
   return (
     <div>
-      <SearchBar />
+      <SearchBarContainer />
       <FilmsLocationMapContainer />
     </div>
   );

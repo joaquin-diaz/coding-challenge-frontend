@@ -31,7 +31,11 @@ const SearchButton = styled(Button)`
   padding: 15px;
 `;
 
-const SearchBar: React.FC = () => {
+interface SearchBarProps {
+  isLoading: boolean;
+}
+
+const SearchBar: React.FC<SearchBarProps> = props => {
   const [searchValue, setSearchValue] = useState<string>('');
 
   return (
@@ -44,7 +48,7 @@ const SearchBar: React.FC = () => {
             placeholder="Search by title, release year or main actor"
           />
         </InputContainer>
-        <SearchButton>SEARCH</SearchButton>
+        <SearchButton disabled={props.isLoading}>SEARCH</SearchButton>
       </Container>
     </div>
   );

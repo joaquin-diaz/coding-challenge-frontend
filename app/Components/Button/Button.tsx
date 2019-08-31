@@ -9,14 +9,25 @@ const StyledButton = styled.button`
   border-radius: 5px;
   outline: none;
   cursor: pointer;
+  box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+
+  &:disabled {
+    background-color: ${styles.colors.disabled};
+    cursor: initial;
+  }
 `;
 
 interface ButtonProps {
   className?: string;
+  disabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = props => {
-  return <StyledButton className={props.className}>{props.children}</StyledButton>;
+  return (
+    <StyledButton className={props.className} disabled={props.disabled}>
+      {props.children}
+    </StyledButton>
+  );
 };
 
 export default Button;
