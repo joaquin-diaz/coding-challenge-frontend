@@ -1,21 +1,17 @@
 import * as React from 'react';
 import FilmsLocationMap from '../Components/FilmsLocationMap';
 
-import Film from '../types/Film';
+import useFilmsApi from '../hooks/useFilmsApi';
 
 const FilmsLocationMapContainer = () => {
-  const films: Array<Film> = [
-    {
-      title: 'The lord of the Rings',
-      coordinates: {
-        lat: 37.7900442,
-        lng: -122.3999262,
-      },
-      address: '555 Market St',
-    },
-  ];
+  const [filmsState, fetchFilms] = useFilmsApi();
 
-  return <FilmsLocationMap films={films} />;
+  // Fetch films on mount
+  React.useEffect(() => {
+    fetchFilms('', 0);
+  }, []);
+
+  return <FilmsLocationMap films={filmsState.films} />;
 };
 
 export default FilmsLocationMapContainer;

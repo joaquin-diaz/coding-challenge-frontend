@@ -1,4 +1,5 @@
 import 'react-hot-loader';
+import 'babel-polyfill';
 
 import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
