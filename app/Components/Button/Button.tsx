@@ -5,6 +5,10 @@ import styles from '../../constants/styles';
 const StyledButton = styled.button`
   background-color: ${styles.colors.primary};
   color: white;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
 `;
 
 interface ButtonProps {

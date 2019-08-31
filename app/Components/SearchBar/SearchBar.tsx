@@ -25,9 +25,10 @@ const InputContainer = styled.div`
 
 const SearchButton = styled(Button)`
   position: absolute;
-  right: -25px;
+  right: -100px;
   height: 50px;
-  width: 50px;
+  font-weight: bold;
+  padding: 15px;
 `;
 
 const SearchBar: React.FC = () => {
@@ -43,7 +44,7 @@ const SearchBar: React.FC = () => {
             placeholder="Search by title, release year or main actor"
           />
         </InputContainer>
-        <SearchButton>S</SearchButton>
+        <SearchButton>SEARCH</SearchButton>
       </Container>
     </div>
   );
