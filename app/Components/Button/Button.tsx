@@ -20,11 +20,12 @@ const StyledButton = styled.button`
 interface ButtonProps {
   className?: string;
   disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 const Button: React.FC<ButtonProps> = props => {
   return (
-    <StyledButton className={props.className} disabled={props.disabled}>
+    <StyledButton className={props.className} disabled={props.disabled} type={props.type}>
       {props.children}
     </StyledButton>
   );

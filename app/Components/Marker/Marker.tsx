@@ -9,6 +9,7 @@ const { useState } = React;
 
 const Container = styled.div`
   position: relative;
+  cursor: pointer;
 `;
 
 const StyledMarker = styled.div`
@@ -33,10 +34,6 @@ const StyledMarker = styled.div`
     margin-left: -5px;
     margin-top: -5px;
     background-color: ${styles.colors.primary};
-  }
-
-  &:hover {
-    cursor: pointer;
   }
 `;
 

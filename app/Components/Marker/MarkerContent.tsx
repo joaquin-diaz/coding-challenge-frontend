@@ -14,6 +14,7 @@ const Container = styled(Card)<ContainerProps>`
   right: 0;
   padding: 10px 20px;
   font-size: 15px;
+  z-index: 10;
 
   ${props => (props.hidden ? 'opacity: 0;' : 'opacity: 1;')}
 `;

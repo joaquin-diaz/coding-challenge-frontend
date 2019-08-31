@@ -33,13 +33,18 @@ const SearchButton = styled(Button)`
 
 interface SearchBarProps {
   isLoading: boolean;
+  onSubmitSearch: (query: string) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = props => {
   const [searchValue, setSearchValue] = useState<string>('');
+  const handleSubmitSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    props.onSubmitSearch(searchValue);
+  };
 
   return (
-    <div>
+    <form onSubmit={handleSubmitSearch}>
       <Container>
         <InputContainer>
           <Input
@@ -48,9 +53,11 @@ const SearchBar: React.FC<SearchBarProps> = props => {
             placeholder="Search by title, release year or main actor"
           />
         </InputContainer>
-        <SearchButton disabled={props.isLoading}>SEARCH</SearchButton>
+        <SearchButton type="submit" disabled={props.isLoading}>
+          SEARCH
+        </SearchButton>
       </Container>
-    </div>
+    </form>
   );
 };
 
