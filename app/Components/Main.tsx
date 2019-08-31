@@ -2,13 +2,15 @@ import * as React from 'react';
 
 import FilmsLocationMapContainer from '../Containers/FilmsLocationMap.container';
 import SearchBarContainer from '../Containers/SearchBar.container';
+import FilmDetailsContainer from '../Containers/FilmDetails.container';
 
 const Main: React.FC = () => {
   return (
-    <div>
+    <React.Fragment>
       <SearchBarContainer />
       <FilmsLocationMapContainer />
-    </div>
+      <FilmDetailsContainer />
+    </React.Fragment>
   );
 };
 

@@ -17,7 +17,7 @@ const fetchFilms = (query: string, limit: number) => {
       ];
 
       resolve(films);
-    }, 5000);
+    }, 100);
   });
 };
 
