@@ -7,13 +7,13 @@ const MapContainer = styled.div`
   width: 100%;
 `;
 
-const Map: React.FC = () => {
+const Map: React.FC = props => {
   const mapProps: MapProps = {
     center: {
-      lat: 59.95,
-      lng: 30.33,
+      lat: -33.840096,
+      lng: -59.455255,
     },
-    zoom: 11,
+    zoom: 16,
     bootstrapURLKeys: {
       key: ENV.GOOGLE_MAPS_API_KEY,
     },
@@ -21,7 +21,7 @@ const Map: React.FC = () => {
 
   return (
     <MapContainer>
-      <GoogleMapReact {...mapProps} />
+      <GoogleMapReact {...mapProps}>{props.children}</GoogleMapReact>
     </MapContainer>
   );
 };
