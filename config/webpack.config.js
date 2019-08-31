@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { DefinePlugin } = require('webpack');
+const config = require('./config');
 
 module.exports = {
   entry: './app/index.tsx',
@@ -32,6 +33,7 @@ module.exports = {
       ENV: {
         GOOGLE_MAPS_API_KEY: JSON.stringify(process.env.GOOGLE_MAPS_API_KEY),
       },
+      CONFIG: JSON.stringify(config.development), // TODO: use the right env
     }),
   ],
 };

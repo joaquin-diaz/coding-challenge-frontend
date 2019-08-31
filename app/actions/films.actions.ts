@@ -15,6 +15,10 @@ type FilmActionType = Action<FilmsAction>;
 
 export interface FetchFilmsAction extends FilmActionType {
   type: typeof FETCH_FILMS;
+  payload: {
+    query: string;
+    limit: number;
+  };
 }
 export interface FetchFilmsSuccessAction extends FilmActionType {
   type: typeof FETCH_FILMS_SUCCESS;
@@ -35,9 +39,13 @@ export type FilmsActions =
   | SelectFilmAction
   | SetSelectedFilmPosterAction;
 
-export const fetchFilms: ActionCreator<FetchFilmsAction> = () => {
+export const fetchFilms: ActionCreator<FetchFilmsAction> = (query: string, limit: number) => {
   return {
     type: FETCH_FILMS,
+    payload: {
+      query,
+      limit,
+    },
   };
 };
 

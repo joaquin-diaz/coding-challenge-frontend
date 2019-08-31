@@ -1,29 +1,26 @@
-import Film from '../types/Film';
+import Film, { FilmJson } from '../types/Film';
 
-const fetchFilms = (query: string, limit: number) => {
-  // Fake data
-  return new Promise(resolve => {
-    setTimeout(() => {
-      console.log('Fetching films: ', query, limit);
-      const films: Array<Film> = [
-        {
-          title: 'The lord of the Rings',
-          coordinates: {
-            lat: 37.7900442,
-            lng: -122.3999262,
-          },
-          address: '555 Market St',
-          releaseYear: 2001,
-          director: 'Peter something',
-          actor1: 'Sir Ian',
-          actor2: 'El del ciclon',
-          actor3: 'Orlandito Boom',
-        },
-      ];
+const fetchFilms = (query: string, limit: number): Promise<Array<Film>> => {
+  return fetch(`${CONFIG.apiURL}/films?query=${query}&limit=${limit}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
 
-      resolve(films);
-    }, 100);
-  });
+      return response.json();
+    })
+    .then((data: Array<FilmJson>) => {
+      return data.map(filmJson => ({
+        title: filmJson.title,
+        coordinates: filmJson.coordinates,
+        address: filmJson.locations,
+        director: filmJson.director,
+        actor1: filmJson.actor_1,
+        actor2: filmJson.actor_2,
+        actor3: filmJson.actor_3,
+        releaseYear: filmJson.release_year,
+      }));
+    });
 };
 
 const fetchFilmPoster = (title: string) => {
