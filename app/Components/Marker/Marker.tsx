@@ -40,11 +40,13 @@ const StyledMarker = styled.div`
 `;
 
 interface MarkerProps {
-  lat: string;
-  lng: string;
+  lat: number;
+  lng: number;
+  title: string;
+  address: string;
 }
 
-const Marker: React.FC<MarkerProps> = () => {
+const Marker: React.FC<MarkerProps> = props => {
   const [hovered, onHover] = useState<boolean>(false);
   const onMouseEnter = () => {
     onHover(true);
@@ -56,7 +58,7 @@ const Marker: React.FC<MarkerProps> = () => {
   return (
     <Container>
       <StyledMarker onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} />
-      <MarkerContent title="The Lord of the Rings" address="731, Market St." hidden={!hovered} />
+      <MarkerContent title={props.title} address={props.address} hidden={!hovered} />
     </Container>
   );
 };
