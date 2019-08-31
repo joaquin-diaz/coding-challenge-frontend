@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import styles from '../../constants/styles';
 
 import MarkerContent from './MarkerContent';
+import Film from '../../types/Film';
 
 const { useState } = React;
 
@@ -42,11 +43,12 @@ const StyledMarker = styled.div`
 interface MarkerProps {
   lat: number;
   lng: number;
-  title: string;
-  address: string;
+  film: Film;
+  onClick: (film: Film) => void;
 }
 
 const Marker: React.FC<MarkerProps> = props => {
+  const { film, onClick } = props;
   const [hovered, onHover] = useState<boolean>(false);
   const onMouseEnter = () => {
     onHover(true);
@@ -54,11 +56,14 @@ const Marker: React.FC<MarkerProps> = props => {
   const onMouseLeave = () => {
     onHover(false);
   };
+  const handleOnClick = () => {
+    onClick(film);
+  };
 
   return (
-    <Container>
+    <Container onClick={handleOnClick}>
       <StyledMarker onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} />
-      <MarkerContent title={props.title} address={props.address} hidden={!hovered} />
+      <MarkerContent title={film.title} address={film.address} hidden={!hovered} />
     </Container>
   );
 };

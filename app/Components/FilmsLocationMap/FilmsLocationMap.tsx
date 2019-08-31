@@ -7,17 +7,18 @@ import Film from '../../types/Film';
 
 interface FilmsLocationMapProps {
   films: Array<Film>;
+  onMarkerClick: (film: Film) => void;
 }
 
 const FilmsLocationMap: React.FC<FilmsLocationMapProps> = props => {
   const renderMarker = (film: Film, key: number) => {
     return (
       <Marker
-        title={film.title}
-        address={film.address}
+        film={film}
         key={key}
         lat={film.coordinates.lat}
         lng={film.coordinates.lng}
+        onClick={props.onMarkerClick}
       />
     );
   };

@@ -3,18 +3,24 @@ import { Action, ActionCreator } from 'redux';
 
 export const FETCH_FILMS = 'FETCH_FILMS';
 export const FETCH_FILMS_SUCCESS = 'FETCH_FILMS_SUCCESS';
+export const SELECT_FILM = 'SELECT_FILM';
 
-export type FilmsAction = typeof FETCH_FILMS | typeof FETCH_FILMS_SUCCESS;
+export type FilmsAction = typeof FETCH_FILMS | typeof FETCH_FILMS_SUCCESS | typeof SELECT_FILM;
+type FilmActionType = Action<FilmsAction>;
 
-interface FetchFilmsAction extends Action<FilmsAction> {
+interface FetchFilmsAction extends FilmActionType {
   type: typeof FETCH_FILMS;
 }
-interface FetchFilmsSuccessAction extends Action<FilmsAction> {
+interface FetchFilmsSuccessAction extends FilmActionType {
   type: typeof FETCH_FILMS_SUCCESS;
   films: Array<Film>;
 }
+interface SelectFilm extends FilmActionType {
+  type: typeof SELECT_FILM;
+  film: Film;
+}
 
-export type FilmsActions = FetchFilmsAction | FetchFilmsSuccessAction;
+export type FilmsActions = FetchFilmsAction | FetchFilmsSuccessAction | SelectFilm;
 
 export const fetchFilms: ActionCreator<FetchFilmsAction> = () => {
   return {
@@ -26,5 +32,12 @@ export const fetchFilmsSuccess: ActionCreator<FetchFilmsSuccessAction> = (films:
   return {
     films,
     type: FETCH_FILMS_SUCCESS,
+  };
+};
+
+export const selectFilm: ActionCreator<SelectFilm> = (film: Film) => {
+  return {
+    film,
+    type: SELECT_FILM,
   };
 };

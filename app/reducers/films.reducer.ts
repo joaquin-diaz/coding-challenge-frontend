@@ -5,11 +5,13 @@ import { Reducer } from 'redux';
 export interface FilmsState {
   isLoading: boolean;
   films: Array<Film>;
+  selectedFilm: Film | null;
 }
 
 export const initialState: FilmsState = {
   isLoading: false,
   films: [],
+  selectedFilm: null,
 };
 
 const filmReducer: Reducer<FilmsState> = (
@@ -27,6 +29,11 @@ const filmReducer: Reducer<FilmsState> = (
         ...state,
         films: action.films,
         isLoading: false,
+      };
+    case 'SELECT_FILM':
+      return {
+        ...state,
+        selectedFilm: action.film,
       };
     default:
       return state;
