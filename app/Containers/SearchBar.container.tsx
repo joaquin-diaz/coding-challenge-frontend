@@ -11,6 +11,9 @@ import {
 
 const SearchBarContainer = () => {
   const isLoading = useSelector((store: ApplicationState) => store.films.isLoading);
+  const isLoadingSuggestions = useSelector(
+    (store: ApplicationState) => store.films.isLoadingSuggestions,
+  );
   const searchValue = useSelector((store: ApplicationState) => store.films.query);
   const dispatch = useDispatch();
 
@@ -30,6 +33,7 @@ const SearchBarContainer = () => {
   return (
     <SearchBar
       isLoading={isLoading}
+      isLoadingSuggestions={isLoadingSuggestions}
       query={searchValue}
       onQueryChange={handleQueryChange}
       onSubmitSearch={handleSubmit}

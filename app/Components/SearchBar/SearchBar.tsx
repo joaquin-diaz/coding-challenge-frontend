@@ -7,6 +7,8 @@ import Button from '../Button';
 import SuggestionsContainer from '../../Containers/Suggestions.container';
 
 import debounce from 'lodash/debounce';
+import { Spinner } from '../../Components/Loaders';
+import styles from '../../constants/styles';
 
 const { useState } = React;
 
@@ -44,8 +46,14 @@ const SearchButton = styled(Button)`
   padding: 15px;
 `;
 
+const StyledSpinner = styled(Spinner)`
+  position: absolute;
+  right: 0;
+`;
+
 interface SearchBarProps {
   isLoading: boolean;
+  isLoadingSuggestions: boolean;
   query: string;
   onQueryChange: (query: string) => void;
   onSubmitSearch: (query: string) => void;
@@ -69,6 +77,7 @@ const SearchBar: React.FC<SearchBarProps> = props => {
     <React.Fragment>
       <form onSubmit={handleSubmitSearch}>
         <Container>
+          {props.isLoadingSuggestions && <StyledSpinner color={styles.colors.primary} />}
           <InputContainer>
             <Input
               value={props.query}

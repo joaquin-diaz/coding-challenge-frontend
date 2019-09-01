@@ -47,6 +47,10 @@ const filmReducer: Reducer<FilmsState, FilmsActions> = (
       return {
         ...state,
         selectedFilmPoster: action.posterURL,
+      };
+    case 'FETCH_SUGGESTIONS':
+      return {
+        ...state,
         isLoadingSuggestions: true,
       };
     case 'FETCH_SUGGESTIONS_SUCCESS':
