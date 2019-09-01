@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Spinner /> should render 1`] = `
+.emotion-0 {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+  -webkit-transform: scale(0.4);
+  -ms-transform: scale(0.4);
+  transform: scale(0.4);
+}
+
+.emotion-0 div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border: 6px solid black;
+  border-radius: 50%;
+  -webkit-animation: lds-ring 1.2s cubic-bezier(0.5,0,0.5,1) infinite;
+  animation: lds-ring 1.2s cubic-bezier(0.5,0,0.5,1) infinite;
+  border-color: black transparent transparent transparent;
+}
+
+.emotion-0 div:nth-child(1) {
+  -webkit-animation-delay: -0.45s;
+  animation-delay: -0.45s;
+}
+
+.emotion-0 div:nth-child(2) {
+  -webkit-animation-delay: -0.3s;
+  animation-delay: -0.3s;
+}
+
+.emotion-0 div:nth-child(3) {
+  -webkit-animation-delay: -0.15s;
+  animation-delay: -0.15s;
+}
+
+<Spinner
+  color="black"
+>
+  <Styled(div)
+    color="black"
+  >
+    <div
+      className="emotion-0"
+      color="black"
+    >
+      <div />
+      <div />
+      <div />
+      <div />
+    </div>
+  </Styled(div)>
+</Spinner>
+`;

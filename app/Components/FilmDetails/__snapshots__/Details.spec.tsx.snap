@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Details /> should render 1`] = `
+.emotion-0 {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.emotion-1 {
+  font-style: italic;
+}
+
+<Details
+  film={
+    Object {
+      "actor1": "Siddarth",
+      "actor2": "Nithya Menon",
+      "actor3": "Priya Anand",
+      "address": "Epic Roasthouse (399 Embarcadero)",
+      "coordinates": Object {
+        "lat": 123,
+        "lng": 456,
+      },
+      "director": "Jayendra",
+      "productionCompany": "SPI Cinemas",
+      "releaseYear": "2011",
+      "title": "180",
+      "writer": "Umarji Anuradha, Jayendra, Aarthi Sriram, & Suba ",
+    }
+  }
+>
+  <div>
+    <Styled(div)>
+      <div
+        className="emotion-0"
+      >
+        180
+         - 
+        2011
+      </div>
+    </Styled(div)>
+    <strong>
+      Directed by
+    </strong>
+    : 
+    Jayendra
+     
+    <br />
+    <Styled(div)>
+      <div
+        className="emotion-1"
+      >
+        Siddarth
+        , 
+        Nithya Menon
+        , 
+        Priya Anand
+      </div>
+    </Styled(div)>
+  </div>
+</Details>
+`;

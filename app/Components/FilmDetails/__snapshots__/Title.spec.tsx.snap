@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Title /> should render 1`] = `
+.emotion-0 {
+  background-color: #3f51b5;
+  color: white;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+<Styled(h1)>
+  <h1
+    className="emotion-0"
+  >
+    Test
+  </h1>
+</Styled(h1)>
+`;

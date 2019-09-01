@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Close /> should render 1`] = `
+.emotion-0 {
+  width: 32px;
+  height: 32px;
+}
+
+.emotion-0:before,
+.emotion-0:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #3f51b5;
+}
+
+.emotion-0:before {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.emotion-0:after {
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+<Styled(div)>
+  <div
+    className="emotion-0"
+  />
+</Styled(div)>
+`;

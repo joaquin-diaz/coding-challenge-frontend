@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Suggestions /> should be null 1`] = `
+<Suggestions
+  onSuggestionClick={[Function]}
+  suggestions={Array []}
+/>
+`;
+
+exports[`<Suggestions /> should render 1`] = `
+.emotion-4 {
+  background: white;
+  box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.emotion-1 {
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.emotion-1:hover {
+  background-color: #eceff1;
+}
+
+.emotion-0 {
+  font-size: 12px;
+  font-style: italic;
+}
+
+<Suggestions
+  onSuggestionClick={[Function]}
+  suggestions={
+    Array [
+      Object {
+        "subtitle": "Subsomething",
+        "title": "Something",
+      },
+      Object {
+        "subtitle": "Subsomething",
+        "title": "Something",
+      },
+    ]
+  }
+>
+  <Styled(div)>
+    <div
+      className="emotion-4"
+    >
+      <Styled(div)
+        key="0"
+        onClick={[Function]}
+      >
+        <div
+          className="emotion-1"
+          onClick={[Function]}
+        >
+          <div>
+            Something
+          </div>
+          <Styled(div)>
+            <div
+              className="emotion-0"
+            >
+              Subsomething
+            </div>
+          </Styled(div)>
+        </div>
+      </Styled(div)>
+      <Styled(div)
+        key="1"
+        onClick={[Function]}
+      >
+        <div
+          className="emotion-1"
+          onClick={[Function]}
+        >
+          <div>
+            Something
+          </div>
+          <Styled(div)>
+            <div
+              className="emotion-0"
+            >
+              Subsomething
+            </div>
+          </Styled(div)>
+        </div>
+      </Styled(div)>
+    </div>
+  </Styled(div)>
+</Suggestions>
+`;

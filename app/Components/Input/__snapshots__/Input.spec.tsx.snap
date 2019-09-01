@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> should render 1`] = `
+.emotion-0 {
+  border: none;
+  width: 100%;
+  font-size: 14px;
+}
+
+.emotion-0:hover,
+.emotion-0:focus {
+  outline: none;
+}
+
+<Input
+  onChange={[Function]}
+  placeholder="Test"
+  value="123"
+>
+  <Styled(input)
+    onChange={[Function]}
+    placeholder="Test"
+    value="123"
+  >
+    <input
+      className="emotion-0"
+      onChange={[Function]}
+      placeholder="Test"
+      value="123"
+    />
+  </Styled(input)>
+</Input>
+`;

@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FilmsLocationMap /> should render with markers 1`] = `
+<div>
+  <Map
+    center={
+      Object {
+        "lat": 37.7900484,
+        "lng": -122.4021149,
+      }
+    }
+  >
+    <Marker
+      film={
+        Object {
+          "actor1": "Siddarth",
+          "actor2": "Nithya Menon",
+          "actor3": "Priya Anand",
+          "address": "Epic Roasthouse (399 Embarcadero)",
+          "coordinates": Object {
+            "lat": 123,
+            "lng": 456,
+          },
+          "director": "Jayendra",
+          "productionCompany": "SPI Cinemas",
+          "releaseYear": "2011",
+          "title": "180",
+          "writer": "Umarji Anuradha, Jayendra, Aarthi Sriram, & Suba ",
+        }
+      }
+      key="0"
+      lat={123}
+      lng={456}
+      onClick={[Function]}
+    />
+    <Marker
+      film={
+        Object {
+          "actor1": "Siddarth",
+          "actor2": "Nithya Menon",
+          "actor3": "Priya Anand",
+          "address": "Epic Roasthouse (399 Embarcadero)",
+          "coordinates": Object {
+            "lat": 123,
+            "lng": 456,
+          },
+          "director": "Jayendra",
+          "productionCompany": "SPI Cinemas",
+          "releaseYear": "2011",
+          "title": "180",
+          "writer": "Umarji Anuradha, Jayendra, Aarthi Sriram, & Suba ",
+        }
+      }
+      key="1"
+      lat={123}
+      lng={456}
+      onClick={[Function]}
+    />
+  </Map>
+</div>
+`;

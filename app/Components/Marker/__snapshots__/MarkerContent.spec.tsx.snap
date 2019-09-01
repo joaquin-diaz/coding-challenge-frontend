@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MarkerContent /> should render 1`] = `
+.emotion-0 {
+  background: white;
+  box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+  box-sizing: border-box;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 35px;
+  width: 200px;
+  left: -100px;
+  right: 0;
+  padding: 10px 20px;
+  font-size: 15px;
+  z-index: 10;
+  opacity: 1;
+}
+
+<MarkerContent
+  address="Testy"
+  hidden={false}
+  title="Something"
+>
+  <Styled(div)
+    hidden={false}
+  >
+    <div
+      className="emotion-0"
+      hidden={false}
+    >
+      Something
+       
+      <br />
+       
+      Testy
+    </div>
+  </Styled(div)>
+</MarkerContent>
+`;
+
+exports[`<MarkerContent /> should render hidden 1`] = `
+.emotion-0 {
+  background: white;
+  box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+  box-sizing: border-box;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 35px;
+  width: 200px;
+  left: -100px;
+  right: 0;
+  padding: 10px 20px;
+  font-size: 15px;
+  z-index: 10;
+  opacity: 0;
+}
+
+<MarkerContent
+  address="Testy"
+  hidden={true}
+  title="Something"
+>
+  <Styled(div)
+    hidden={true}
+  >
+    <div
+      className="emotion-0"
+      hidden={true}
+    >
+      Something
+       
+      <br />
+       
+      Testy
+    </div>
+  </Styled(div)>
+</MarkerContent>
+`;

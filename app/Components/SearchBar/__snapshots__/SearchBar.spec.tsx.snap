@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchBar /> should be loading 1`] = `
+<Fragment>
+  <form
+    onSubmit={[Function]}
+  >
+    <Styled(div)>
+      <Styled(Spinner)
+        color="#3f51b5"
+      />
+      <Styled(div)>
+        <Input
+          onChange={[Function]}
+          placeholder="Search by title, release year or main actor"
+          value="Something"
+        />
+      </Styled(div)>
+      <Styled(Button)
+        disabled={true}
+        type="submit"
+      >
+        SEARCH
+      </Styled(Button)>
+    </Styled(div)>
+  </form>
+  <Styled(div)>
+    <SuggestionsContainer />
+  </Styled(div)>
+</Fragment>
+`;
+
+exports[`<SearchBar /> should render 1`] = `
+<Fragment>
+  <form
+    onSubmit={[Function]}
+  >
+    <Styled(div)>
+      <Styled(div)>
+        <Input
+          onChange={[Function]}
+          placeholder="Search by title, release year or main actor"
+          value="Something"
+        />
+      </Styled(div)>
+      <Styled(Button)
+        disabled={false}
+        type="submit"
+      >
+        SEARCH
+      </Styled(Button)>
+    </Styled(div)>
+  </form>
+  <Styled(div)>
+    <SuggestionsContainer />
+  </Styled(div)>
+</Fragment>
+`;

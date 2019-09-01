@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Card /> should render 1`] = `
+.emotion-0 {
+  background: white;
+  box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+<Styled(div)>
+  <div
+    className="emotion-0"
+  >
+    Test
+  </div>
+</Styled(div)>
+`;
