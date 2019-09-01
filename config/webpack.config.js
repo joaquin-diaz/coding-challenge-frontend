@@ -33,7 +33,7 @@ module.exports = {
       ENV: {
         GOOGLE_MAPS_API_KEY: JSON.stringify(process.env.GOOGLE_MAPS_API_KEY),
       },
-      CONFIG: JSON.stringify(config.development), // TODO: use the right env
+      CONFIG: JSON.stringify(config[process.env.NODE_ENV] || config.development),
     }),
   ],
 };
