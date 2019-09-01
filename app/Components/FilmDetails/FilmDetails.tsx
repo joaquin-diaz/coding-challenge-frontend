@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Film from '../../types/Film';
+import { FilmWithCoordinates } from '../../types/Film';
 import styled from '@emotion/styled';
 import { useSpring, animated } from 'react-spring';
 import Title from './Title';
@@ -29,7 +29,7 @@ const DetailsContainer = styled.div`
 `;
 
 interface FilmDetailsProps {
-  film: Film | null;
+  film: FilmWithCoordinates | null;
   posterURL: string | null;
 }
 

@@ -1,6 +1,6 @@
 type Coordiate = {
-  lat: string;
-  lng: string;
+  lat: number;
+  lng: number;
 };
 
 export default Coordiate;

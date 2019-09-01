@@ -1,7 +1,15 @@
-import Film, { FilmJson } from '../types/Film';
+import { Film, FilmJson, FilmWithCoordinates } from '../types/Film';
 
-const fetchFilms = (query: string, limit: number): Promise<Array<Film>> => {
-  return fetch(`${CONFIG.apiURL}/films?query=${query}&limit=${limit}`)
+const fetchFilms = (
+  query: string,
+  limit: number,
+  includeCoordinates: boolean = false,
+): Promise<Array<Film | FilmWithCoordinates>> => {
+  return fetch(
+    `${
+      CONFIG.apiURL
+    }/films?query=${query}&limit=${limit}&include_coordinates=${includeCoordinates.toString()}`,
+  )
     .then(response => {
       if (!response.ok) {
         throw new Error(response.statusText);

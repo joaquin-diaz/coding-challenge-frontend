@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Film from '../../types/Film';
+import { FilmWithCoordinates } from '../../types/Film';
 import styled from '@emotion/styled';
 
 interface DetailsProps {
-  film: Film;
+  film: FilmWithCoordinates;
 }
 
 const FilmTitle = styled.div`

@@ -4,8 +4,18 @@ import * as filmsService from '../services/films.service';
 import * as filmsActions from '../actions/films.actions';
 
 export function* fetchFilms(action: filmsActions.FetchFilmsAction) {
-  const response = yield call(filmsService.fetchFilms, action.payload.query, action.payload.limit);
+  const response = yield call(
+    filmsService.fetchFilms,
+    action.payload.query,
+    action.payload.limit,
+    true,
+  );
   yield put(filmsActions.fetchFilmsSuccess(response));
+}
+
+export function* fetchFilmsSuggestions(action: filmsActions.FetchFilmsAction) {
+  const response = yield call(filmsService.fetchFilms, action.payload.query, 50, false);
+  yield put(filmsActions.fetchSuggestionsSuccess(response));
 }
 
 export function* fetchFilmPoster(action: filmsActions.SelectFilmAction) {
@@ -19,4 +29,5 @@ export function* fetchFilmPoster(action: filmsActions.SelectFilmAction) {
 export default [
   takeLatest(filmsActions.FETCH_FILMS, fetchFilms),
   takeLatest(filmsActions.SELECT_FILM, fetchFilmPoster),
+  takeLatest(filmsActions.FETCH_SUGGESTIONS, fetchFilmsSuggestions),
 ];

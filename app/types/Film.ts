@@ -2,13 +2,16 @@ import Coordinate from './Coordinate';
 
 type Film = {
   title: string;
-  coordinates: Coordinate;
   address: string;
   director: string;
   releaseYear: string;
   actor1: string;
   actor2: string;
   actor3: string;
+};
+
+type FilmWithCoordinates = Film & {
+  coordinates: Coordinate;
 };
 
 type FilmJson = {
@@ -27,6 +30,26 @@ type FilmJson = {
   };
 };
 
-export default Film;
+const consolidateSuggestions = (films: Array<Film>, query: string): Array<string> => {
+  const suggestions = [];
+  const consolidatedSuggestions: any = {};
 
-export { FilmJson };
+  for (const film of films) {
+    const { title, releaseYear, actor1 } = film;
+    const lowerCaseQuery = query.toLowerCase();
+
+    if (
+      (title.toLowerCase().includes(lowerCaseQuery) ||
+        releaseYear.toLowerCase().includes(lowerCaseQuery) ||
+        actor1.toLowerCase().includes(lowerCaseQuery)) &&
+      !consolidatedSuggestions[title]
+    ) {
+      consolidatedSuggestions[title] = true;
+      suggestions.push(`${title} // ${actor1}, ${releaseYear}`);
+    }
+  }
+
+  return suggestions;
+};
+
+export { FilmJson, FilmWithCoordinates, Film, consolidateSuggestions };

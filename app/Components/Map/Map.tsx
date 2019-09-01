@@ -16,8 +16,8 @@ interface MapProps {
 const Map: React.FC<MapProps> = props => {
   const mapProps: GoogleMapProps = {
     center: {
-      lat: parseInt(props.center.lat, 10),
-      lng: parseInt(props.center.lng, 10),
+      lat: props.center.lat,
+      lng: props.center.lng,
     },
     zoom: 14,
     bootstrapURLKeys: {

@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import styles from '../../constants/styles';
 
 import MarkerContent from './MarkerContent';
-import Film from '../../types/Film';
+import { FilmWithCoordinates } from '../../types/Film';
 
 const { useState } = React;
 
@@ -40,8 +40,8 @@ const StyledMarker = styled.div`
 interface MarkerProps {
   lat: number;
   lng: number;
-  film: Film;
-  onClick: (film: Film) => void;
+  film: FilmWithCoordinates;
+  onClick: (film: FilmWithCoordinates) => void;
 }
 
 const Marker: React.FC<MarkerProps> = props => {

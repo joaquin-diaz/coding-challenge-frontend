@@ -3,15 +3,15 @@ import * as React from 'react';
 import Map from '../Map';
 import Marker from '../Marker';
 
-import Film from '../../types/Film';
+import { FilmWithCoordinates } from '../../types/Film';
 
 interface FilmsLocationMapProps {
-  films: Array<Film>;
-  onMarkerClick: (film: Film) => void;
+  films: Array<FilmWithCoordinates>;
+  onMarkerClick: (film: FilmWithCoordinates) => void;
 }
 
 const FilmsLocationMap: React.FC<FilmsLocationMapProps> = props => {
-  const renderMarker = (film: Film, key: number) => {
+  const renderMarker = (film: FilmWithCoordinates, key: number) => {
     return (
       <Marker
         film={film}

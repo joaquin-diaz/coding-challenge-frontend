@@ -5,18 +5,18 @@ import { ApplicationState } from '../configure.store';
 
 import FilmsLocationMap from '../Components/FilmsLocationMap';
 import { fetchFilms, selectFilm } from '../actions/films.actions';
-import Film from '../types/Film';
+import { FilmWithCoordinates } from '../types/Film';
 
 const FilmsLocationMapContainer = () => {
   const films = useSelector((state: ApplicationState) => state.films.films);
   const dispatch = useDispatch();
-  const onFilmSelect = (film: Film) => {
+  const onFilmSelect = (film: FilmWithCoordinates) => {
     dispatch(selectFilm(film));
   };
 
   // Fetch films on mount
   React.useEffect(() => {
-    dispatch(fetchFilms('', 10));
+    dispatch(fetchFilms('ajshdoahsdkahskdjhaskd', 1));
   }, []);
 
   return <FilmsLocationMap films={films} onMarkerClick={onFilmSelect} />;

@@ -1,12 +1,14 @@
-import Film from '../types/Film';
+import { Film, FilmWithCoordinates } from '../types/Film';
 import { FilmsActions } from '../actions/films.actions';
 import { Reducer } from 'redux';
 
 export interface FilmsState {
   isLoading: boolean;
-  films: Array<Film>;
-  selectedFilm: Film | null;
+  films: Array<FilmWithCoordinates>;
+  selectedFilm: FilmWithCoordinates | null;
   selectedFilmPoster: string | null;
+  filmSuggestions: Array<Film>;
+  isLoadingSuggestions: boolean;
 }
 
 export const initialState: FilmsState = {
@@ -14,9 +16,11 @@ export const initialState: FilmsState = {
   films: [],
   selectedFilm: null,
   selectedFilmPoster: null,
+  filmSuggestions: [],
+  isLoadingSuggestions: false,
 };
 
-const filmReducer: Reducer<FilmsState> = (
+const filmReducer: Reducer<FilmsState, FilmsActions> = (
   state: FilmsState = initialState,
   action: FilmsActions,
 ) => {
@@ -41,6 +45,18 @@ const filmReducer: Reducer<FilmsState> = (
       return {
         ...state,
         selectedFilmPoster: action.posterURL,
+        isLoadingSuggestions: true,
+      };
+    case 'FETCH_SUGGESTIONS_SUCCESS':
+      return {
+        ...state,
+        filmSuggestions: action.films,
+        isLoadingSuggestions: false,
+      };
+    case 'CLEAR_SUGGESTIONS':
+      return {
+        ...state,
+        filmSuggestions: [],
       };
     default:
       return state;
