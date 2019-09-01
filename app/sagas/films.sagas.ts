@@ -3,6 +3,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import * as filmsService from '../services/films.service';
 import * as filmsActions from '../actions/films.actions';
 
+// TODO: Add tests to sagas
 export function* fetchFilms(action: filmsActions.FetchFilmsAction) {
   const response = yield call(
     filmsService.fetchFilms,

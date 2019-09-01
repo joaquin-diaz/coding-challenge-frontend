@@ -22,7 +22,16 @@ describe('Consolidate Suggestions', () => {
 
     const suggestions = consolidateSuggestions(films, 've');
     expect(suggestions.length).toBe(2);
-    expect(suggestions).toEqual(['Venom', 'Sarasa - Main actor: Venoso']);
+    expect(suggestions).toEqual([
+      {
+        title: 'Venom',
+        subtitle: 'Tomy, 2018',
+      },
+      {
+        title: 'Sarasa',
+        subtitle: 'Venoso, 2014',
+      },
+    ]);
   });
 
   it('should return 0 suggestions', () => {
@@ -69,6 +78,11 @@ describe('Consolidate Suggestions', () => {
 
     const suggestions = consolidateSuggestions(films, '2014');
     expect(suggestions.length).toBe(1);
-    expect(suggestions).toEqual(['Sarasa - Released on 2014']);
+    expect(suggestions).toEqual([
+      {
+        title: 'Sarasa',
+        subtitle: 'Venoso, 2014',
+      },
+    ]);
   });
 });

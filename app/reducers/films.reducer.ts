@@ -22,6 +22,7 @@ export const initialState: FilmsState = {
   query: '',
 };
 
+// TODO: add tests to reducers
 const filmReducer: Reducer<FilmsState, FilmsActions> = (
   state: FilmsState = initialState,
   action: FilmsActions,
