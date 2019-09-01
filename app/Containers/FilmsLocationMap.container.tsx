@@ -16,7 +16,7 @@ const FilmsLocationMapContainer = () => {
 
   // Fetch films on mount
   React.useEffect(() => {
-    dispatch(fetchFilms('ajshdoahsdkahskdjhaskd', 1));
+    dispatch(fetchFilms('', 1));
   }, []);
 
   return <FilmsLocationMap films={films} onMarkerClick={onFilmSelect} />;
