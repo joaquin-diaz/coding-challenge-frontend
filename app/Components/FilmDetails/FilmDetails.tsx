@@ -5,6 +5,7 @@ import { useSpring, animated } from 'react-spring';
 import Title from './Title';
 import styles from '../../constants/styles';
 import Details from './Details';
+import { Close } from '../../Components/Icons';
 
 const Container = styled(animated.div)`
   position: absolute;
@@ -12,7 +13,6 @@ const Container = styled(animated.div)`
   width: 500px;
   background-color: white;
   height: 100%;
-  overflow: hidden;
   box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
 `;
 
@@ -28,9 +28,17 @@ const DetailsContainer = styled.div`
   margin: 25px;
 `;
 
+const StyledCloseIcon = styled(Close)`
+  position: absolute;
+  left: -40px;
+  top: 15px;
+  cursor: pointer;
+`;
+
 interface FilmDetailsProps {
   film: FilmWithCoordinates | null;
   posterURL: string | null;
+  onClose: () => void;
 }
 
 const FilmDetails: React.FC<FilmDetailsProps> = props => {
@@ -42,9 +50,9 @@ const FilmDetails: React.FC<FilmDetailsProps> = props => {
       friction: 20,
     },
     from: {
-      opacity: 0,
-      right: -500,
-      display: 'none',
+      opacity: film ? 0 : 1,
+      right: film ? -500 : 0,
+      display: film ? 'none' : 'block',
     },
     to: {
       opacity: film ? 1 : 0,
@@ -57,6 +65,7 @@ const FilmDetails: React.FC<FilmDetailsProps> = props => {
 
     return (
       <React.Fragment>
+        <StyledCloseIcon onClick={props.onClose} />
         <Title>{film.address}</Title>
         <DetailsContainer>
           <ImageContainer>

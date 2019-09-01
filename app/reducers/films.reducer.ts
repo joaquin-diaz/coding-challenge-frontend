@@ -37,6 +37,7 @@ const filmReducer: Reducer<FilmsState, FilmsActions> = (
         ...state,
         films: action.films,
         isLoading: false,
+        selectedFilm: null,
       };
     case 'SELECT_FILM':
       return {
@@ -68,6 +69,11 @@ const filmReducer: Reducer<FilmsState, FilmsActions> = (
       return {
         ...state,
         query: action.payload.query,
+      };
+    case 'CLEAR_SELECTED_FILM':
+      return {
+        ...state,
+        selectedFilm: null,
       };
     default:
       return state;
