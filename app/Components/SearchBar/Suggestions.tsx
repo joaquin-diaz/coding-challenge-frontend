@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { consolidateSuggestions, Film } from '../../types/Film';
 import Card from '../../Components/Card';
 import styled from '@emotion/styled';
 import styles from '../../constants/styles';
+import { Suggestion } from '../../types/Film';
 
 const Container = styled(Card)`
   width: 100%;
   padding: 10px 0;
 `;
 
-const Suggestion = styled.div`
+const SuggestionRow = styled.div`
   padding: 10px 15px;
   cursor: pointer;
 
@@ -23,32 +23,25 @@ const Match = styled.div`
   font-style: italic;
 `;
 
-const { useState, useEffect } = React;
-
 interface SuggestionsProps {
-  suggestedFilms: Array<Film>;
-  query: string;
   onSuggestionClick: (title: string) => void;
+  suggestions: Array<Suggestion>;
 }
 
 const Suggestions: React.FC<SuggestionsProps> = props => {
-  const [suggestions, setSuggestions] = useState<Array<string>>([]);
-  useEffect(() => {
-    const s = consolidateSuggestions(props.suggestedFilms, props.query);
-    setSuggestions(s);
-  }, [props.suggestedFilms.length]);
+  const { suggestions, onSuggestionClick } = props;
 
-  const renderSuggestion = (suggestion: string, key: number) => {
-    const [title, match] = suggestion.split('//');
+  const renderSuggestion = (suggestion: Suggestion, key: number) => {
+    const { title, subtitle } = suggestion;
     const handleClick = () => {
-      props.onSuggestionClick(title);
+      onSuggestionClick(title);
     };
 
     return (
-      <Suggestion key={key} onClick={handleClick}>
+      <SuggestionRow key={key} onClick={handleClick}>
         <div>{title}</div>
-        <Match>{match}</Match>
-      </Suggestion>
+        <Match>{subtitle}</Match>
+      </SuggestionRow>
     );
   };
 

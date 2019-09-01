@@ -4,10 +4,9 @@ import styled from '@emotion/styled';
 import Card from '../Card';
 import Input from '../Input';
 import Button from '../Button';
+import SuggestionsContainer from '../../Containers/Suggestions.container';
 
 import debounce from 'lodash/debounce';
-import Suggestions from './Suggestions';
-import { Film } from '../../types/Film';
 
 const { useState } = React;
 
@@ -29,7 +28,7 @@ const InputContainer = styled.div`
   flex: 0.7;
 `;
 
-const SuggestionsContainer = styled.div`
+const Suggestions = styled.div`
   position: absolute;
   left: 30px;
   top: 100px;
@@ -47,27 +46,23 @@ const SearchButton = styled(Button)`
 
 interface SearchBarProps {
   isLoading: boolean;
+  query: string;
+  onQueryChange: (query: string) => void;
   onSubmitSearch: (query: string) => void;
   onFetchSuggestions: (query: string) => void;
-  suggestedFilms: Array<Film>;
-  onClearSuggestions: () => void;
+  clearSuggestions: () => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = props => {
-  const [searchValue, setSearchValue] = useState<string>('');
   const [debouncedSearch] = useState(() => debounce(props.onFetchSuggestions, 300));
   const handleSubmitSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    props.onSubmitSearch(searchValue);
+    props.onSubmitSearch(props.query);
+    props.clearSuggestions();
   };
   const onChange = (value: string) => {
-    setSearchValue(value);
+    props.onQueryChange(value);
     debouncedSearch(value);
-  };
-  const handleSuggestionClick = (title: string) => {
-    setSearchValue(title);
-    props.onSubmitSearch(title);
-    props.onClearSuggestions();
   };
 
   return (
@@ -76,7 +71,7 @@ const SearchBar: React.FC<SearchBarProps> = props => {
         <Container>
           <InputContainer>
             <Input
-              value={searchValue}
+              value={props.query}
               onChange={onChange}
               placeholder="Search by title, release year or main actor"
             />
@@ -86,13 +81,9 @@ const SearchBar: React.FC<SearchBarProps> = props => {
           </SearchButton>
         </Container>
       </form>
-      <SuggestionsContainer>
-        <Suggestions
-          suggestedFilms={props.suggestedFilms}
-          query={searchValue}
-          onSuggestionClick={handleSuggestionClick}
-        />
-      </SuggestionsContainer>
+      <Suggestions>
+        <SuggestionsContainer />
+      </Suggestions>
     </React.Fragment>
   );
 };

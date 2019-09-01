@@ -2,13 +2,21 @@ import * as React from 'react';
 import SearchBar from '../Components/SearchBar/SearchBar';
 import { useSelector, useDispatch } from 'react-redux';
 import { ApplicationState } from '../configure.store';
-import { fetchFilms, fetchSuggestions, clearSuggestions } from '../actions/films.actions';
+import {
+  fetchFilms,
+  fetchSuggestions,
+  clearSuggestions,
+  setSearchValue,
+} from '../actions/films.actions';
 
 const SearchBarContainer = () => {
   const isLoading = useSelector((store: ApplicationState) => store.films.isLoading);
-  const filmSuggestions = useSelector((store: ApplicationState) => store.films.filmSuggestions);
-
+  const searchValue = useSelector((store: ApplicationState) => store.films.query);
   const dispatch = useDispatch();
+
+  const handleQueryChange = (query: string) => {
+    dispatch(setSearchValue(query));
+  };
   const handleSubmit = (query: string) => {
     dispatch(fetchFilms(query, 10));
   };
@@ -22,10 +30,11 @@ const SearchBarContainer = () => {
   return (
     <SearchBar
       isLoading={isLoading}
+      query={searchValue}
+      onQueryChange={handleQueryChange}
       onSubmitSearch={handleSubmit}
       onFetchSuggestions={handleFetchSuggestions}
-      suggestedFilms={filmSuggestions}
-      onClearSuggestions={handleClearSuggestions}
+      clearSuggestions={handleClearSuggestions}
     />
   );
 };

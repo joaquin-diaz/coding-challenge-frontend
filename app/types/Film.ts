@@ -30,8 +30,13 @@ type FilmJson = {
   };
 };
 
-const consolidateSuggestions = (films: Array<Film>, query: string): Array<string> => {
-  const suggestions = [];
+type Suggestion = {
+  title: string;
+  subtitle: string;
+};
+
+const consolidateSuggestions = (films: Array<Film>, query: string): Array<Suggestion> => {
+  const suggestions: Array<Suggestion> = [];
   const consolidatedSuggestions: any = {};
 
   for (const film of films) {
@@ -45,11 +50,14 @@ const consolidateSuggestions = (films: Array<Film>, query: string): Array<string
       !consolidatedSuggestions[title]
     ) {
       consolidatedSuggestions[title] = true;
-      suggestions.push(`${title} // ${actor1}, ${releaseYear}`);
+      suggestions.push({
+        title,
+        subtitle: `${actor1}, ${releaseYear}`,
+      });
     }
   }
 
   return suggestions;
 };
 
-export { FilmJson, FilmWithCoordinates, Film, consolidateSuggestions };
+export { FilmJson, FilmWithCoordinates, Film, consolidateSuggestions, Suggestion };

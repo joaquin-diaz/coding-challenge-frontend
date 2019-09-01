@@ -9,6 +9,7 @@ export interface FilmsState {
   selectedFilmPoster: string | null;
   filmSuggestions: Array<Film>;
   isLoadingSuggestions: boolean;
+  query: string;
 }
 
 export const initialState: FilmsState = {
@@ -18,6 +19,7 @@ export const initialState: FilmsState = {
   selectedFilmPoster: null,
   filmSuggestions: [],
   isLoadingSuggestions: false,
+  query: '',
 };
 
 const filmReducer: Reducer<FilmsState, FilmsActions> = (
@@ -57,6 +59,11 @@ const filmReducer: Reducer<FilmsState, FilmsActions> = (
       return {
         ...state,
         filmSuggestions: [],
+      };
+    case 'SET_SEARCH_VALUE':
+      return {
+        ...state,
+        query: action.payload.query,
       };
     default:
       return state;

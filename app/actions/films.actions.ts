@@ -8,6 +8,7 @@ export const SET_SELECTED_FILM_POSTER = 'SET_SELECTED_FILM_POSTER';
 export const FETCH_SUGGESTIONS = 'FETCH_SUGGESTIONS';
 export const FETCH_SUGGESTIONS_SUCCESS = 'FETCH_SUGGESTIONS_SUCCESS';
 export const CLEAR_SUGGESTIONS = 'CLEAR_SUGGESTIONS';
+export const SET_SEARCH_VALUE = 'SET_SEARCH_VALUE';
 
 export type FilmsAction =
   | typeof FETCH_FILMS
@@ -16,7 +17,8 @@ export type FilmsAction =
   | typeof SET_SELECTED_FILM_POSTER
   | typeof FETCH_SUGGESTIONS
   | typeof FETCH_SUGGESTIONS_SUCCESS
-  | typeof CLEAR_SUGGESTIONS;
+  | typeof CLEAR_SUGGESTIONS
+  | typeof SET_SEARCH_VALUE;
 
 type FilmActionType = Action<FilmsAction>;
 
@@ -52,6 +54,12 @@ export interface FetchSuggestionsSuccessAction extends FilmActionType {
 export interface ClearSuggestionsAction extends FilmActionType {
   type: typeof CLEAR_SUGGESTIONS;
 }
+export interface SetSearchValueAction extends FilmActionType {
+  type: typeof SET_SEARCH_VALUE;
+  payload: {
+    query: string;
+  };
+}
 
 export type FilmsActions =
   | FetchFilmsAction
@@ -60,7 +68,8 @@ export type FilmsActions =
   | SetSelectedFilmPosterAction
   | FetchSuggestionsAction
   | FetchSuggestionsSuccessAction
-  | ClearSuggestionsAction;
+  | ClearSuggestionsAction
+  | SetSearchValueAction;
 
 export const fetchFilms: ActionCreator<FetchFilmsAction> = (query: string, limit: number) => {
   return {
@@ -118,5 +127,14 @@ export const fetchSuggestionsSuccess: ActionCreator<FetchSuggestionsSuccessActio
 export const clearSuggestions: ActionCreator<ClearSuggestionsAction> = () => {
   return {
     type: CLEAR_SUGGESTIONS,
+  };
+};
+
+export const setSearchValue: ActionCreator<SetSearchValueAction> = (query: string) => {
+  return {
+    type: SET_SEARCH_VALUE,
+    payload: {
+      query,
+    },
   };
 };
