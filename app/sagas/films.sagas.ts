@@ -5,18 +5,26 @@ import * as filmsActions from '../actions/films.actions';
 
 // TODO: Add tests to sagas
 export function* fetchFilms(action: filmsActions.FetchFilmsAction) {
-  const response = yield call(
-    filmsService.fetchFilms,
-    action.payload.query,
-    action.payload.limit,
-    true,
-  );
-  yield put(filmsActions.fetchFilmsSuccess(response));
+  try {
+    const response = yield call(
+      filmsService.fetchFilms,
+      action.payload.query,
+      action.payload.limit,
+      true,
+    );
+    yield put(filmsActions.fetchFilmsSuccess(response));
+  } catch (e) {
+    console.error('Server error', e);
+  }
 }
 
 export function* fetchFilmsSuggestions(action: filmsActions.FetchFilmsAction) {
-  const response = yield call(filmsService.fetchFilms, action.payload.query, 50, false);
-  yield put(filmsActions.fetchSuggestionsSuccess(response));
+  try {
+    const response = yield call(filmsService.fetchFilms, action.payload.query, 50, false);
+    yield put(filmsActions.fetchSuggestionsSuccess(response));
+  } catch (e) {
+    console.error('Server error', e);
+  }
 }
 
 export function* fetchFilmPoster(action: filmsActions.SelectFilmAction) {
