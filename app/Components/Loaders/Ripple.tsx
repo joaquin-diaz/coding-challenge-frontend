@@ -19,7 +19,7 @@ const RippleStyles = styled.div<RippleProps>`
     animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
   }
 
-  div:nth-child(2) {
+  div:nth-of-type(2) {
     animation-delay: -0.5s;
   }
 

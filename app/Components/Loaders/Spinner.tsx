@@ -25,15 +25,15 @@ const SpinnerStyles = styled.div<SpinnerProps>`
     border-color: ${props => props.color} transparent transparent transparent;
   }
 
-  div:nth-child(1) {
+  div:nth-of-type(1) {
     animation-delay: -0.45s;
   }
 
-  div:nth-child(2) {
+  div:nth-of-type(2) {
     animation-delay: -0.3s;
   }
 
-  div:nth-child(3) {
+  div:nth-of-type(3) {
     animation-delay: -0.15s;
   }
 

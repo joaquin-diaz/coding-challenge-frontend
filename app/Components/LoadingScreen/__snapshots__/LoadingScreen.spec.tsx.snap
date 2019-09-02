@@ -48,7 +48,7 @@ exports[`<LoadingScreen /> should render 1`] = `
   animation: lds-ripple 1s cubic-bezier(0,0.2,0.8,1) infinite;
 }
 
-.emotion-0 div:nth-child(2) {
+.emotion-0 div:nth-of-type(2) {
   -webkit-animation-delay: -0.5s;
   animation-delay: -0.5s;
 }
