@@ -22,9 +22,6 @@ jobs:
           key: yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - node_modules/
-      - run:
-          name: Run linter
-          command: yarn run lint
       - run: 
           name: Run tests
           command: yarn test
