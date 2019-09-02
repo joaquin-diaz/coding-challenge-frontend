@@ -1,0 +1,93 @@
+default-docker-config: &default-docker-config
+  docker:
+    - image: circleci/node:10
+  working_directory: ~/app
+
+version: 2
+jobs:
+  test:
+    <<: *default-docker-config
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package & Jest Cache
+          keys:
+            - yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - jest-cache-{{ .Branch }}
+      - run: 
+          name: Install dependencies
+          command: yarn install
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules/
+      - run:
+          name: Run linter
+          command: yarn run lint
+      - run: 
+          name: Run tests
+          command: yarn test
+          environment:
+            JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
+      - save_cache:
+          name: Save Jest Cache
+          key: jest-cache-{{ .Branch }}
+          paths:
+            - jest-cache/
+      - store_test_results:
+          path: reports/junit
+      - store_artifacts:
+          path: reports/junit
+      - store_artifacts:
+          path: test-results
+          destination: coverage
+  build:
+    <<: *default-docker-config
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - run:
+          name: Build code
+          command: yarn build-prod
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - www
+            - node_modules
+  deploy:
+    docker:
+      - image: cibuilds/aws:1.16.1
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - checkout
+      - run: |
+          ln -s /tmp/workspace/www
+          ln -s /tmp/workspace/node_modules
+      - deploy:
+          command: aws s3 cp ./www s3://kindalab-code-challenge --recursive --acl public-read
+
+only-master: &only-master
+  filters:
+    branches:
+      only:
+        - master
+
+workflows:
+  version: 2
+  deploy-master:
+    jobs:
+      - test:
+          <<: *only-master
+      - build:
+          <<: *only-master
+          requires:
+            - test
+      - deploy:
+          <<: *only-master
+          requires:
+            - test
+            - build
