@@ -65,7 +65,7 @@
     "babel-plugin-emotion": "^10.0.16",
     "babel-polyfill": "^6.26.0",
     "google-map-react": "^1.1.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
